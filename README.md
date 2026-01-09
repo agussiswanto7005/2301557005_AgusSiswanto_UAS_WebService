@@ -1,4 +1,4 @@
-# UAS Web Service - API Sistem Pengaduan Masyarakat
+# UAS Web Service Development - API Sistem Pengaduan Masyarakat
 **Kecamatan Talun, Kabupaten Pekalongan**
 
 Project ini disusun untuk memenuhi Tugas Akhir Mata Kuliah Web Service (2025).
@@ -11,7 +11,7 @@ Aplikasi ini berfungsi sebagai Backend (API) untuk layanan aspirasi warga, menca
 
 ---
 
-### 🔗 Link Penting (Demo & Dokumentasi)
+### 🔗 Link (Demo & Dokumentasi)
 
 Berikut adalah lampiran wajib untuk penilaian UAS:
 
@@ -19,7 +19,7 @@ Berikut adalah lampiran wajib untuk penilaian UAS:
     [[KLIK DI SINI UNTUK MENONTON VIDEO](https://youtu.be/GXqaWAhmFPM?si=WD-wkUk7zr7m67FT)
 
 * 📚 **Dokumentasi API (Postman):**
-    [Lihat Dokumentasi Lengkap di Sini](https://documenter.getpostman.com/view/48961634/2sBXVbFsbi)
+    [LIHAT DOKUMENTASI LENGKAP DISINI](https://documenter.getpostman.com/view/48961634/2sBXVbFsbi)
 
 ---
 
