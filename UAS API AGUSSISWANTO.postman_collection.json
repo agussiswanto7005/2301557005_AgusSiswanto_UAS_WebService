@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "918a8d00-3bdb-43e4-8b09-00e08b06151a",
+		"name": "UAS API AGUSSISWANTO",
+		"description": "## **API SISTEM PENGADUAN MASYARAKAT KECAMATAN TALUN KABUPATEN PEKALONGAN**\n\n**Nama Mahasiswa:** AGUS SISWANTO\n\n**NIM :** 23.01.55.7005\n\n**Teknologi:** Lumen Micro-framework (PHP), MySQL, Postman  \nDisusun Untuk Memenuhi UAS Mata kuliah Web Service UNISBANK 2025\n\n<img src=\"https://content.pstmn.io/d337523c-01aa-4b20-b09e-6b7155732c5a/aW1hZ2UucG5n\" alt=\"\" height=\"3470\" width=\"1234\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48961634",
+		"_collection_link": "https://agussiswanto7005-3931169.postman.co/workspace/AGUS-SISWANTO-23.01.55.7005's-W~e9f8472e-720d-4d97-8520-049deb2954fc/collection/48961634-918a8d00-3bdb-43e4-8b09-00e08b06151a?action=share&source=collection_link&creator=48961634"
+	},
+	"item": [
+		{
+			"name": "API PENGADUAN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan"
+					]
+				},
+				"description": "### **1\\. Tabel Pengaduan**\n\n- **Fungsi Utama:** Sebagai tabel inti yang menampung seluruh data laporan keluhan atau aspirasi yang dikirimkan oleh masyarakat.\n    \n- **Operasi CRUD:**\n    \n    - **GET:** Menampilkan daftar seluruh pengaduan beserta statusnya (misal: 'menunggu', 'proses', 'selesai').\n        \n    - **POST:** Digunakan oleh masyarakat untuk menginput laporan baru.\n        \n    - **DELETE:** Memberikan otoritas untuk menghapus data laporan tertentu berdasarkan ID.\n        \n- **Status Implementasi:** Berhasil diuji dengan method GET, POST, dan DELETE.\n    \n\n<img src=\"https://content.pstmn.io/bb485ba5-4b5b-4a68-b63a-be21dae12453/aW1hZ2UucG5n\" alt=\"\" height=\"634\" width=\"1280\">"
+			},
+			"response": [
+				{
+					"name": "API PENGADUAN",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pengaduan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pengaduan"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "POST PENGADUAN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"kategori_id\": 1,\r\n    \"judul\": \"Jalan Berlubang di Desa Sengare\",\r\n    \"isi\": \"Mohon perbaikan jalan di dusun 2 Desa Sengare karena sudah sangat parah.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/ef8bf658-05d1-45a9-a92a-61c1f4b1e8fc/aW1hZ2UucG5n\" width=\"1292\" height=\"632\">"
+			},
+			"response": [
+				{
+					"name": "POST PENGADUAN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"kategori_id\": 1,\r\n    \"judul\": \"Jalan Berlubang di Desa Sengare\",\r\n    \"isi\": \"Mohon perbaikan jalan di dusun 2 Desa Sengare karena sudah sangat parah.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pengaduan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pengaduan"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "API PENGADUAN",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan",
+						"1"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/8855b240-ab00-4c42-a6b1-f2f3ab392bbb/ZGVsZXRlIHBlbmdhZHVhbiAxLnBuZw==\" alt=\"\">"
+			},
+			"response": [
+				{
+					"name": "API PENGADUAN",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pengaduan/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pengaduan",
+								"12"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "### **2\\. Tabel Kategori Pengaduan**\n\n- **Fungsi Utama:** Tabel referensi (master data) yang mengklasifikasikan jenis laporan agar lebih terorganisir.\n    \n- **Operasi CRUD:**\n    \n    - **GET:** Menampilkan daftar kategori yang tersedia (contoh: Infrastruktur, Kesehatan, Keamanan).\n        \n    - **POST:** Menambahkan kategori baru ke dalam sistem.\n        \n    - **DELETE:** Menghapus kategori yang sudah tidak digunakan lagi.\n        \n- **Status Implementasi:** Endpoint `POST /api/kategori` memerlukan field `nama_kategori`.\n    \n\n<img src=\"https://content.pstmn.io/e97f96f6-d4db-4d97-a0f1-5d15c1f99176/aW1hZ2UucG5n\" alt=\"\" height=\"645\" width=\"1308\">"
+			},
+			"response": [
+				{
+					"name": "API KATEGORI PENGADUAN",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/kategori",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"kategori"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_kategori\": \"Layanan Publik\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/kategori",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kategori"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/a1ed9684-6388-4b8b-9e04-0b5ea873fe6e/UE9TVCBLQVRFR09SSSBQRU5HQURVQU4ucG5n\" alt=\"\">"
+			},
+			"response": [
+				{
+					"name": "API KATEGORI PENGADUAN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama_kategori\": \"Perkebunan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/kategori",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"kategori"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_kategori\": \"Layanan Publik\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/kategori/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kategori",
+						"11"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/6c6fd4d5-92fe-4fe5-953e-c236da7bec34/REVMRVRFIEtBVEVHT1JJLnBuZw==\" alt=\"\">"
+			},
+			"response": [
+				{
+					"name": "API KATEGORI PENGADUAN",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama_kategori\": \"Layanan Publik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/kategori/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"kategori",
+								"12"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "**3\\. Tabel Petugas**\n\n- **Fungsi Utama:** Menyimpan data kredensial staf atau administrator yang bertanggung jawab mengelola dan merespon pengaduan masyarakat.\n    \n- **Operasi CRUD:**\n    \n    - **GET:** Melihat daftar petugas aktif.\n        \n    - **POST:** Mendaftarkan akun petugas baru.\n        \n    - **DELETE:** Menonaktifkan atau menghapus akun petugas.\n        \n\n<img src=\"https://content.pstmn.io/e3395dbb-9960-409e-a186-3628b95d20c6/aW1hZ2UucG5n\" alt=\"\" height=\"628\" width=\"1284\">"
+			},
+			"response": [
+				{
+					"name": "API PETUGAS",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"TONI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/petugas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"petugas"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/4c0476d3-d215-44ac-a49d-43ad468825c4/UE9TVCBQRVRVR0FTLnBuZw==\" alt=\"\">"
+			},
+			"response": [
+				{
+					"name": "API PETUGAS",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"TONI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/petugas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"petugas"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/petugas/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"petugas",
+						"11"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/fe8dbb39-a721-4e72-acae-ce4fd08f4543/REVMRVRFIFBFVFVHQVMucG5n\" alt=\"\">"
+			},
+			"response": [
+				{
+					"name": "API PETUGAS",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/petugas/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"petugas",
+								"12"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "API TANGGAPAN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "### **4\\. Tabel Tanggapan**\n\n- **Fungsi Utama:** Menyimpan data respon atau solusi teknis yang diberikan oleh petugas terhadap laporan pengaduan masyarakat tertentu.\n    \n- **Relasi Data:** Tabel ini menghubungkan `pengaduan_id` (laporan yang ditanggapi) dan `petugas_id` (staf yang menanggapi).\n    \n- **Operasi CRUD:**\n    \n    - **GET:** Melihat riwayat tanggapan yang sudah diberikan.\n        \n    - **POST:** Petugas mengirimkan tanggapan baru.\n        \n\n<img src=\"https://content.pstmn.io/8e5e2f77-f3a6-41f2-9f44-4413f252799d/aW1hZ2UucG5n\" width=\"636\" height=\"635\">"
+			},
+			"response": []
+		},
+		{
+			"name": "API TANGGAPAN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pengaduan_id\": 10,\r\n    \"petugas_id\": 1,\r\n    \"tgl_tanggapan\": \"2025-12-27\",\r\n    \"isi_tanggapan\": \"Laporan Anda sedang kami proses, terima kasih.\",\r\n    \"status_baru\": \"diproses\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tanggapan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tanggapan"
+					]
+				},
+				"description": "<img src=\"https://content.pstmn.io/567a6928-6fff-4a07-b877-bf371d5b76d7/cG9zdCB0YW5nZ2FwYW4ucG5n\" alt=\"\">"
+			},
+			"response": []
+		},
+		{
+			"name": "API USER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "### **5\\. Tabel User**\n\n- **Fungsi Utama:** Tabel sentral untuk manajemen identitas seluruh pengguna aplikasi, baik masyarakat umum maupun admin.\n    \n- **Atribut Utama:** Menyimpan data seperti `nama`, `email`, `password`, dan `role` (hak akses).\n    \n- **Operasi CRUD:**\n    \n    - **GET:** Menampilkan data profil user.\n        \n    - **POST:** Digunakan untuk proses registrasi user baru.\n        \n\n<img src=\"https://content.pstmn.io/76c985d2-bcfd-406e-8c6d-c3f597ed9e7c/aW1hZ2UucG5n\" alt=\"\" height=\"594\" width=\"1303\">"
+			},
+			"response": []
+		},
+		{
+			"name": "API USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"Agus Siswanto\",\r\n    \"email\": \"agus@example.com\",\r\n    \"password\": \"password123\",\r\n    \"role\": \"masyarakat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API LOG STATUS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "### **6\\. Tabel Log Status**\n\n- **Fungsi Utama:** Berfungsi sebagai _audit trail_ atau catatan histori otomatis setiap kali terjadi perubahan status pada sebuah laporan pengaduan.\n    \n- **Manfaat:** Memberikan transparansi kepada pelapor mengenai progres laporan mereka dari waktu ke waktu.\n    \n- **Operasi:** Umumnya hanya menyediakan method **GET** untuk keperluan pelaporan histori."
+			},
+			"response": []
+		},
+		{
+			"name": "API PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"kategori_id\": 1,\r\n    \"judul\": \"Jalan Berlubang di Desa Sengare\",\r\n    \"isi\": \"Mohon perbaikan jalan di dusun 2 Desa Sengare karena sudah sangat parah.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pengaduan/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pengaduan",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/kategori",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kategori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_kategori\": \"Perkebunan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/kategori",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kategori"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API KATEGORI PENGADUAN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama_kategori\": \"Layanan Publik\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/kategori/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kategori",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/petugas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"petugas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"TONI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/petugas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"petugas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API PETUGAS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/petugas/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"petugas",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

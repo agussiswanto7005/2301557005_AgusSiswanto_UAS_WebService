@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Sistem Pengaduan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .sidebar { min-height: 100vh; background: #212529; color: white; }
+        .nav-link { color: #adb5bd; cursor: pointer; margin-bottom: 5px; }
+        .nav-link:hover, .nav-link.active { color: white; background: #0d6efd; border-radius: 5px; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar p-4">
+            <h4 class="mb-4 text-white">Admin Panel</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" onclick="showSection('sect-pengaduan', this)"> <i class="bi bi-envelope"></i> Pengaduan</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('sect-kategori', this)"> <i class="bi bi-tags"></i> Kategori</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('sect-petugas', this)"> <i class="bi bi-person-badge"></i> Petugas</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('sect-users', this)"> <i class="bi bi-people"></i> Users</a></li>
+                <li class="nav-item mt-5"><a class="nav-link text-danger" href="index.html"> <i class="bi bi-box-arrow-left"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-10 p-5">
+            
+            <div id="sect-pengaduan" class="content-section active">
+                <h3>Manajemen Pengaduan</h3>
+                <hr>
+                <button onclick="loadPengaduan()" class="btn btn-sm btn-outline-primary mb-3"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+                <div class="table-responsive bg-white shadow-sm p-3 rounded">
+                    <table class="table table-hover">
+                        <thead class="table-light"><tr><th>ID</th><th>Judul</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <tbody id="body-pengaduan"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sect-kategori" class="content-section">
+                <h3>Master Kategori</h3>
+                <hr>
+                <button onclick="openModalKategori()" class="btn btn-primary mb-3"><i class="bi bi-plus-lg"></i> Tambah Kategori</button>
+                <div class="table-responsive bg-white shadow-sm p-3 rounded">
+                    <table class="table table-bordered">
+                        <thead class="table-light"><tr><th>ID</th><th>Nama Kategori</th><th>Aksi</th></tr></thead>
+                        <tbody id="body-kategori"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sect-petugas" class="content-section">
+                <h3>Data Petugas</h3>
+                <hr>
+                <button onclick="openModalPetugas()" class="btn btn-primary mb-3"><i class="bi bi-plus-lg"></i> Tambah Petugas</button>
+                <div class="table-responsive bg-white shadow-sm p-3 rounded">
+                    <table class="table table-bordered">
+                        <thead class="table-light"><tr><th>ID</th><th>Nama</th><th>Jabatan</th><th>No HP</th><th>Aksi</th></tr></thead>
+                        <tbody id="body-petugas"></tbody>
+                    </table>
+                </div>
+            </div>
+
+             <div id="sect-users" class="content-section">
+                <h3>Data Pengguna</h3>
+                <hr>
+                <button onclick="loadUsers()" class="btn btn-sm btn-outline-primary mb-3">Refresh</button>
+                <div class="bg-white shadow-sm p-3 rounded">
+                    <table class="table table-striped">
+                        <thead><tr><th>ID</th><th>Nama</th><th>Email</th><th>Role</th></tr></thead>
+                        <tbody id="body-users"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalKategori" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Form Kategori</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <input type="hidden" id="katId">
+                <div class="mb-3"><label>Nama Kategori</label><input type="text" id="katNama" class="form-control"></div>
+            </div>
+            <div class="modal-footer"><button onclick="saveKategori()" class="btn btn-primary">Simpan</button></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPetugas" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Form Petugas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <input type="hidden" id="petId">
+                <div class="mb-3"><label>Nama</label><input type="text" id="petNama" class="form-control"></div>
+                <div class="mb-3"><label>Jabatan</label><input type="text" id="petJabatan" class="form-control"></div>
+                <div class="mb-3"><label>No HP</label><input type="text" id="petHp" class="form-control"></div>
+            </div>
+            <div class="modal-footer"><button onclick="savePetugas()" class="btn btn-primary">Simpan</button></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const API = 'http://localhost:8000/api';
+    
+    // ---- NAVIGASI ----
+    function showSection(id, el) {
+        document.querySelectorAll('.content-section').forEach(d => d.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+        el.classList.add('active');
+
+        if(id === 'sect-pengaduan') loadPengaduan();
+        if(id === 'sect-kategori') loadKategori();
+        if(id === 'sect-petugas') loadPetugas();
+        if(id === 'sect-users') loadUsers();
+    }
+
+    // ---- 1. LOGIKA PENGADUAN ----
+    async function loadPengaduan() {
+        const tbody = document.getElementById('body-pengaduan');
+        tbody.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+        try {
+            const res = await fetch(`${API}/pengaduan`);
+            const data = await res.json();
+            tbody.innerHTML = '';
+            data.forEach(d => {
+                let badge = d.status === 'selesai' ? 'bg-success' : (d.status === 'diproses' ? 'bg-warning' : 'bg-secondary');
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${d.id}</td>
+                        <td>${d.judul}<br><small class="text-muted">${d.user?.nama || 'Anonim'}</small></td>
+                        <td><span class="badge ${badge}">${d.status}</span></td>
+                        <td>
+                            <select onchange="updateStatus(${d.id}, this.value)" class="form-select form-select-sm" style="width:100px">
+                                <option value="dikirim" ${d.status=='dikirim'?'selected':''}>Dikirim</option>
+                                <option value="diproses" ${d.status=='diproses'?'selected':''}>Proses</option>
+                                <option value="selesai" ${d.status=='selesai'?'selected':''}>Selesai</option>
+                            </select>
+                        </td>
+                    </tr>`;
+            });
+        } catch(e) { tbody.innerHTML = '<tr><td colspan="4" class="text-danger">Gagal load data. Cek API.</td></tr>'; }
+    }
+    
+    async function updateStatus(id, stat) {
+        await fetch(`${API}/pengaduan/${id}`, {
+            method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({status:stat})
+        });
+        alert('Status diupdate!');
+    }
+
+    // ---- 2. LOGIKA KATEGORI (CRUD) ----
+    async function loadKategori() {
+        const res = await fetch(`${API}/kategori`);
+        const data = await res.json();
+        const tbody = document.getElementById('body-kategori');
+        tbody.innerHTML = '';
+        data.forEach(d => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${d.id}</td>
+                    <td>${d.nama_kategori}</td>
+                    <td>
+                        <button onclick="editKategori(${d.id}, '${d.nama_kategori}')" class="btn btn-sm btn-warning">Edit</button>
+                        <button onclick="deleteData('kategori', ${d.id})" class="btn btn-sm btn-danger">Hapus</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    let modalKat = new bootstrap.Modal(document.getElementById('modalKategori'));
+    
+    function openModalKategori() {
+        document.getElementById('katId').value = '';
+        document.getElementById('katNama').value = '';
+        modalKat.show();
+    }
+
+    function editKategori(id, nama) {
+        document.getElementById('katId').value = id;
+        document.getElementById('katNama').value = nama;
+        modalKat.show();
+    }
+
+    async function saveKategori() {
+        const id = document.getElementById('katId').value;
+        const nama = document.getElementById('katNama').value;
+        const method = id ? 'PUT' : 'POST';
+        const url = id ? `${API}/kategori/${id}` : `${API}/kategori`;
+
+        await fetch(url, {
+            method: method,
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({nama_kategori: nama})
+        });
+        modalKat.hide();
+        loadKategori();
+    }
+
+    // ---- 3. LOGIKA PETUGAS (CRUD) ----
+    async function loadPetugas() {
+        const tbody = document.getElementById('body-petugas');
+        tbody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
+        try {
+            const res = await fetch(`${API}/petugas`);
+            const data = await res.json();
+            tbody.innerHTML = '';
+            if(data.length === 0) tbody.innerHTML = '<tr><td colspan="5" class="text-center">Data kosong</td></tr>';
+            
+            data.forEach(d => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${d.id}</td>
+                        <td>${d.nama}</td>
+                        <td>${d.jabatan}</td>
+                        <td>${d.no_hp}</td>
+                        <td>
+                            <button onclick="editPetugas(${d.id}, '${d.nama}', '${d.jabatan}', '${d.no_hp}')" class="btn btn-sm btn-warning">Edit</button>
+                            <button onclick="deleteData('petugas', ${d.id})" class="btn btn-sm btn-danger">Hapus</button>
+                        </td>
+                    </tr>`;
+            });
+        } catch(e) { tbody.innerHTML = '<tr><td colspan="5" class="text-danger">Error Load API</td></tr>'; }
+    }
+
+    let modalPet = new bootstrap.Modal(document.getElementById('modalPetugas'));
+
+    function openModalPetugas() {
+        document.getElementById('petId').value = '';
+        document.getElementById('petNama').value = '';
+        modalPet.show();
+    }
+
+    function editPetugas(id, nama, jab, hp) {
+        document.getElementById('petId').value = id;
+        document.getElementById('petNama').value = nama;
+        document.getElementById('petJabatan').value = jab;
+        document.getElementById('petHp').value = hp;
+        modalPet.show();
+    }
+
+    async function savePetugas() {
+        const id = document.getElementById('petId').value;
+        const body = {
+            nama: document.getElementById('petNama').value,
+            jabatan: document.getElementById('petJabatan').value,
+            no_hp: document.getElementById('petHp').value
+        };
+        const method = id ? 'PUT' : 'POST';
+        const url = id ? `${API}/petugas/${id}` : `${API}/petugas`;
+
+        await fetch(url, { method: method, headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+        modalPet.hide();
+        loadPetugas();
+    }
+
+    // ---- 4. FUNGSI HAPUS GLOBAL ----
+    async function deleteData(endpoint, id) {
+        if(confirm('Yakin hapus data ini?')) {
+            await fetch(`${API}/${endpoint}/${id}`, { method: 'DELETE' });
+            if(endpoint === 'kategori') loadKategori();
+            if(endpoint === 'petugas') loadPetugas();
+        }
+    }
+
+    // ---- 5. LOGIKA USERS (READ ONLY) ----
+    async function loadUsers() {
+        const res = await fetch(`${API}/users`);
+        const data = await res.json();
+        const tbody = document.getElementById('body-users');
+        tbody.innerHTML = '';
+        data.forEach(d => {
+            tbody.innerHTML += `<tr><td>${d.id}</td><td>${d.nama}</td><td>${d.email}</td><td>${d.role}</td></tr>`;
+        });
+    }
+
+    // LOAD AWAL
+    loadPengaduan();
+</script>
+
+</body>
+</html>
